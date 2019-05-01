@@ -120,9 +120,12 @@ bool EncodeSymbols(const uint32_t *symbols, int num_values, int num_components,
   if (num_components <= 0)
     num_components = 1;
   std::vector<uint32_t> bit_lengths;
-  uint32_t max_value;
+  uint32_t max_value = 0;
   ComputeBitLengths(symbols, num_values, num_components, &bit_lengths,
                     &max_value);
+
+  if(((int)max_value) < 0)
+		return false;//In practice, signed integers are transmitted here, sometimes they are negative. The following methods are not applicable to them.
 
   // Approximate number of bits needed for storing the symbols using the tagged
   // scheme.
