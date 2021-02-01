@@ -972,7 +972,7 @@ else ()
               $<TARGET_OBJECTS:draco_animation_enc>
               $<TARGET_OBJECTS:draco_point_cloud>
               $<TARGET_OBJECTS:draco_points_enc>)
-  add_library(draco
+  add_library(draco STATIC
               ${draco_version_sources}
               $<TARGET_OBJECTS:draco_attributes>
               $<TARGET_OBJECTS:draco_compression_attributes_dec>
